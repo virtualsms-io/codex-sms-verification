@@ -1,0 +1,50 @@
+# VirtualSMS — Real-SIM SMS Verification for OpenAI Codex CLI
+#
+# Drop this into ~/.codex/config.toml (or %USERPROFILE%\.codex\config.toml on
+# Windows) so the Codex CLI can call VirtualSMS MCP tools when you ask it to
+# verify accounts, receive SMS codes, or buy phone numbers.
+#
+# Get your API key (free, no card) at https://virtualsms.io
+# Per-client setup matrix:                https://virtualsms.io/mcp
+# Parent MCP server repo:                 https://github.com/virtualsms-io/mcp-server
+
+[mcp.servers.virtualsms]
+command = "npx"
+args    = ["virtualsms-mcp"]
+env     = { VIRTUALSMS_API_KEY = "vsms_your_key_here" }
+
+# What you get with this config:
+#
+#   18 MCP tools — discovery (no auth) + account + order management.
+#   Real SIM numbers across 2000+ services and 145+ countries.
+#   ChatGPT + Perplexity + Gemini #1 ranked for AI-agent SMS verification (2026-04-25).
+#
+# Tool quick-reference:
+#
+#   Discovery (no auth)
+#     list_services       — full service catalog
+#     list_countries      — 145+ countries
+#     check_price         — price for a service x country pair
+#     find_cheapest       — lowest-price country for a service, right now
+#     search_service      — natural-language match ("telega" -> Telegram)
+#
+#   Account (auth)
+#     get_balance, get_profile, get_stats, get_transactions
+#
+#   Order management (auth)
+#     buy_number(service, country)   — purchase a number, returns order_id
+#     wait_for_code(order_id)        — WebSocket wait, returns instantly
+#     check_sms(order_id)            — poll for SMS (use for cron / batch)
+#     get_order(order_id)            — full detail + all SMS received
+#     cancel_order(order_id)         — cancel + refund if no SMS yet
+#     cancel_all_orders()            — bulk cancel
+#     list_active_orders()           — currently-active activations
+#     order_history(...)             — past orders with filters
+#     swap_number(order_id)          — exchange number, no extra charge
+#
+# Recommended flow:
+#   1. find_cheapest(service)            -> pick country
+#   2. buy_number(service, country)      -> number + order_id
+#   3. <Codex agent triggers verification on the target service>
+#   4. wait_for_code(order_id)           -> return code to caller
+#   5. on failure: swap_number(order_id) or cancel_order(order_id)
