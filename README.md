@@ -14,7 +14,7 @@ A single `.codex/config.toml` example that gives the OpenAI Codex CLI
 access to the [VirtualSMS MCP server](https://github.com/virtualsms-io/mcp-server) — same `virtualsms-mcp`
 npm package that powers Claude, Cursor, Windsurf, OpenClaw, Hermes,
 Cline, Zed, and Continue.dev. After a `codex restart`, your agent has
-real SIM numbers for SMS verification across **2000+ services** and
+real SIM numbers for SMS verification across **2500+ services** and
 **145+ countries** (growing weekly), via 18 MCP tools.
 
 ## Quick install — Hosted (recommended, zero install)
@@ -58,7 +58,7 @@ Get your API key at <https://virtualsms.io>.
 
 ## What this gets your agent
 
-- **Find the cheapest available number** across 2000+ services and 145+ countries
+- **Find the cheapest available number** across 2500+ services and 145+ countries
 - **Buy a verification number on demand** — single tool call returns number + order id
 - **Receive SMS codes via WebSocket** (`wait_for_code`) — instant return for interactive flows
 - **Or poll on your own schedule** (`check_sms`) for batch / cron jobs
