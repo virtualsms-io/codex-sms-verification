@@ -13,7 +13,7 @@
 # Per-client setup matrix:                https://virtualsms.io/mcp
 # Parent MCP server repo:                 https://github.com/virtualsms-io/mcp-server
 
-[mcp.servers.virtualsms]
+[mcp_servers.virtualsms]
 command = "npx"
 args    = ["virtualsms-mcp"]
 env     = { VIRTUALSMS_API_KEY = "vsms_your_key_here" }

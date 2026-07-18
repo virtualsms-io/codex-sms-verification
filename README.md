@@ -14,18 +14,12 @@ This repo is a single `.codex/config.toml` example that gives the OpenAI Codex C
 
 ## Quick install: Hosted (recommended, zero install)
 
-Paste this into your AI assistant's MCP config:
+Paste this into `~/.codex/config.toml` (or `%USERPROFILE%\.codex\config.toml` on Windows) — Codex reads TOML, not JSON, so this is a `[mcp_servers.<name>]` table, not a `mcpServers` JSON block:
 
-```json
-{
-  "mcpServers": {
-    "virtualsms": {
-      "type": "streamableHttp",
-      "url": "https://mcp.virtualsms.io/mcp",
-      "headers": { "x-api-key": "vsms_your_api_key_here" }
-    }
-  }
-}
+```toml
+[mcp_servers.virtualsms]
+url = "https://mcp.virtualsms.io/mcp"
+http_headers = { "x-api-key" = "vsms_your_api_key_here" }
 ```
 
 No `npm install`, no Node.js required on the client. The MCP server runs at [mcp.virtualsms.io](https://mcp.virtualsms.io).
@@ -39,7 +33,7 @@ Get your API key at <https://virtualsms.io>.
    - **macOS / Linux:** `~/.codex/config.toml`
    - **Windows:** `%USERPROFILE%\.codex\config.toml`
 
-   (If you already have a `config.toml`, merge the `[mcp.servers.virtualsms]` block in.)
+   (If you already have a `config.toml`, merge the `[mcp_servers.virtualsms]` block in.)
 
 2. Set your API key inline in the config OR export it:
 
