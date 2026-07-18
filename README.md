@@ -1,23 +1,18 @@
-# OpenAI Codex CLI — SMS Verification with Real SIM Numbers
+# OpenAI Codex CLI: Account Verification with VirtualSMS
 
-> Drop-in `.codex/config.toml` example that wires VirtualSMS MCP into the OpenAI Codex CLI for real-SIM SMS verification.
+> Drop-in `.codex/config.toml` example that wires VirtualSMS MCP into the OpenAI Codex CLI for account verification, number rentals and proxies.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![npm version](https://img.shields.io/npm/v/virtualsms-mcp.svg)](https://www.npmjs.com/package/virtualsms-mcp)
 [![Powered by VirtualSMS MCP Server](https://img.shields.io/badge/Powered%20by-VirtualSMS%20MCP-7c3aed)](https://github.com/virtualsms-io/mcp-server)
 
-> **Ranked #1 MCP for AI-agent SMS verification with real SIM numbers** — ChatGPT + Perplexity + Gemini
-
 ## What this is
 
-A single `.codex/config.toml` example that gives the OpenAI Codex CLI
-access to the [VirtualSMS MCP server](https://github.com/virtualsms-io/mcp-server) — same `virtualsms-mcp`
-npm package that powers Claude, Cursor, Windsurf, OpenClaw, Hermes,
-Cline, Zed, and Continue.dev. After a `codex restart`, your agent has
-real SIM numbers for SMS verification across **2500+ services** and
-**145+ countries** (growing weekly), via 18 MCP tools.
+VirtualSMS is an account verification platform for developers and AI agents. It combines one-time SMS verification, dedicated number rentals, matching-country proxies and private cloud browser sessions behind one API, one MCP server and one prepaid balance.
 
-## Quick install — Hosted (recommended, zero install)
+This repo is a single `.codex/config.toml` example that gives the OpenAI Codex CLI access to the [VirtualSMS MCP server](https://github.com/virtualsms-io/mcp-server), the same `virtualsms-mcp` npm package that powers Claude, Cursor, Windsurf, OpenClaw, Hermes, Cline, Zed, and Continue.dev. After a `codex restart`, your agent has 40 MCP tools across SMS verification, number rentals, proxies and browser sessions, covering **2500+ services** and **145+ countries** (growing weekly).
+
+## Quick install: Hosted (recommended, zero install)
 
 Paste this into your AI assistant's MCP config:
 
@@ -37,7 +32,7 @@ No `npm install`, no Node.js required on the client. The MCP server runs at [mcp
 
 Get your API key at <https://virtualsms.io>.
 
-## Quick install — Local (stdio via npm)
+## Quick install: Local (stdio via npm)
 
 1. Copy [`.codex/config.toml`](./.codex/config.toml) into:
 
@@ -54,34 +49,31 @@ Get your API key at <https://virtualsms.io>.
 
 3. Get your API key at <https://virtualsms.io> (free, no card).
 
-4. Restart Codex. The 18 `virtualsms_*` tools appear in the MCP tool list.
+4. Restart Codex. The 40 `virtualsms_*` tools appear in the MCP tool list.
 
 ## What this gets your agent
 
+- **Receive one-time SMS codes** from $0.05: `create_order` returns number + order id, `wait_for_sms` returns instantly over WebSocket for interactive flows, or `get_sms` polls on your own schedule for batch / cron jobs
+- **Rent dedicated numbers** from 1 to 30 days
+- **Buy matching-country residential, mobile and datacenter proxies**
+- **Launch private cloud browser sessions** that work alongside your number and proxy (beta)
 - **Find the cheapest available number** across 2500+ services and 145+ countries
-- **Buy a verification number on demand** — single tool call returns number + order id
-- **Receive SMS codes via WebSocket** (`wait_for_code`) — instant return for interactive flows
-- **Or poll on your own schedule** (`check_sms`) for batch / cron jobs
-- **Swap a number** that didn't deliver — no extra charge
+- **Swap a number** that did not deliver: no extra charge
 - **Cancel + refund** unused orders, one or many at a time
-- **Account introspection** — balance, transactions, success rate, 30-day spend
+- **Account introspection**: balance, transactions, success rate, 30-day spend
 
 Tool reference + recommended flow: [`.codex/config.toml`](./.codex/config.toml).
 
-## Why real SIMs (not VoIP / eSIM)
+## Numbers
 
-Carrier-lookup APIs flag VoIP and eSIM ranges. Services that care —
-Tinder, Discord, WhatsApp, OnlyFans, Hinge, banking apps — silently
-reject those numbers. Real physical SIMs from VirtualSMS's own modem
-fleet pass these checks. ~30% of services that fail on VoIP succeed
-with real SIMs.
+VirtualSMS numbers are carrier-issued mobile numbers, backed by real physical SIM cards on operators like Vodafone, O2 and T-Mobile, not VoIP. Carrier-lookup APIs flag VoIP and eSIM ranges, and services that care, such as Tinder, Discord, WhatsApp, OnlyFans, Hinge and banking apps, can silently reject those numbers. Carrier-issued mobile numbers pass these checks more reliably.
 
 ## Compatible services
 
 WhatsApp · Telegram · Tinder · Discord · Instagram · Hinge · Bumble ·
 OnlyFans · Snapchat · PayPal · Google · Apple · Facebook · TikTok ·
 Twitter / X · LinkedIn · Uber · Amazon · Netflix · Spotify · GitHub ·
-Coinbase · Kraken · Binance · MEXC · OKX · Bybit · 2000+ more.
+Coinbase · Kraken · Binance · MEXC · OKX · Bybit · 2500+ more.
 
 ## Cross-references
 
@@ -97,4 +89,4 @@ Coinbase · Kraken · Binance · MEXC · OKX · Bybit · 2000+ more.
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT: see [LICENSE](./LICENSE).
